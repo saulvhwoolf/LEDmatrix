@@ -60,7 +60,7 @@ class Controller(object):
 
     def updateKeyPress(self, new):
         print("PLSS")
-        if self.mode == "d":
+        if self.mode == "d" or self.mode == "n":
             self.controller1.updateKeyPressMethod(new)
 
     def getDim(self):
