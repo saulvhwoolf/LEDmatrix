@@ -153,7 +153,7 @@ randomize(0)
 last = curr
 numThis = 0
 resetTick = 1
-for i in range(100000000000):
+while True:
     # curr
     fourB4 = threeB4[:]
     threeB4 = twoB4[:]
@@ -161,7 +161,7 @@ for i in range(100000000000):
     last = curr[:]
     # curr = []
     tick(i)
-    if resetTick > 0 and (reset(threeB4, curr, "3b4") or
+    if resetTick > 0 and (reset(threeB4, curr, "3b4") or\
        reset(fourB4, curr, "4b4")):
         resetTick = -10
         # controller.updateScreen(2)
@@ -177,13 +177,13 @@ for i in range(100000000000):
 
 
 # while True:
-# 	controller.updateScreen(1)
+#   controller.updateScreen(1)
 # for z in range(10000):
-# 	for y in range(width):
-# 		for x in range(height):
-# 			# minMax(v)
-# 			# val = v*127.0 + 128.0
-# 			controller.setPixel(x, y, r, g, b)
-# 	# sleep(.1)
-# 	controller.updateScreen(.1)
-# 	# print("frame")
+#   for y in range(width):
+#       for x in range(height):
+#           # minMax(v)
+#           # val = v*127.0 + 128.0
+#           controller.setPixel(x, y, r, g, b)
+#   # sleep(.1)
+#   controller.updateScreen(.1)
+#   # print("frame")
