@@ -31,9 +31,8 @@ def randomize1(z, threshold, normal):
     # curr = [ [ [0, 0, 0]  for y in range(height)] for x in range(width)]
     for y in range(width):
         for x in range(height):
-            r = 128.0 + 127.0 * \
-                (snoise3(x * scale, y * scale, start +
-                         z * zScale, octaves=1, persistence=per))
+            r = 128.0 + 127.0 *  (snoise3(x * scale, y * scale, start +
+                                         z * zScale, octaves=1, persistence=per))
             g = 128.0 + 127.0 * (snoise3(x * scale + dist, y * scale +
                                          dist, start + z * zScale, octaves=1,
                                          persistence=per))
@@ -44,7 +43,7 @@ def randomize1(z, threshold, normal):
                 curr[x][y][0] = r
                 curr[x][y][1] = g
                 curr[x][y][2] = b
-            if r > 255 * threshold or g > 255 * threshold or
+            if r > 255 * threshold or g > 255 * threshold or \
             b > 255 * threshold:
                 if normal:
                     curr[x][y][3] = 1
@@ -143,7 +142,7 @@ def difColor(c1, c2):
 
 def randomize(seed):
     randomize1(seed, PositiveThreshold, True)
-    for i in range(0, 100):
+    for i in range(0, 10):
         randomize1(seed + i * 500, NegativeThreshold, False)
     controller.updateScreen(0)
     controller.updateScreen(5)
@@ -153,21 +152,22 @@ randomize(0)
 last = curr
 numThis = 0
 resetTick = 1
+counter = 0
 while True:
+    counter = counter + 1
     # curr
     fourB4 = threeB4[:]
     threeB4 = twoB4[:]
     twoB4 = last[:]
     last = curr[:]
     # curr = []
-    tick(i)
-    if resetTick > 0 and (reset(threeB4, curr, "3b4") or\
-       reset(fourB4, curr, "4b4")):
+    tick(counter)
+    if resetTick > 0 and (reset(threeB4, curr, "3b4") or reset(fourB4, curr, "4b4")):
         resetTick = -10
         # controller.updateScreen(2)
         # print("reseting..")
     if resetTick == 0:
-        randomize(i)
+        randomize(counter)
 
         numThis = 0
 
