@@ -58,7 +58,7 @@ def randomize1(z, threshold, normal):
                         curr[x][y][3] = 0
                         controller.setPixel(x, y, 0, 0, 0)
             # else:
-        # controller.updateScreen(0)
+        controller.updateScreen(0)
 
 
 def nCount(lx, ly):
@@ -145,7 +145,7 @@ def randomize(seed):
     for i in range(0, 10):
         randomize1(seed + i * 500, NegativeThreshold, False)
     controller.updateScreen(0)
-    controller.updateScreen(5)
+    controller.updateScreen(1)
 
 
 randomize(0)
