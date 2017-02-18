@@ -1,0 +1,12 @@
+# To install requirements use
+# pip install -r requirements.txt
+
+# Pyglet
+pyglet
+
+# Noise
+noise
+
+Pillow
+
+# Neopixel is not on pip, so must be installed if used.
